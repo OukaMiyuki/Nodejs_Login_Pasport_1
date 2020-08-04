@@ -48,6 +48,7 @@ router.post('/register', async(req, res) => {
                             user.password = hash;
                             await user.save()
                                 .then(user => {
+                                    req.flash('sukses', 'You are now registered!');
                                     res.redirect('/users/login');
                                 })
                                 .catch(err => console.error(err));
