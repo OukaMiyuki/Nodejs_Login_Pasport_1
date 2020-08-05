@@ -3,12 +3,13 @@ const router = express.Router();
 const { User, validate } = require('../Models/User');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { forwardAuthenticated } = require('../Config/auth');
 
-router.get('/login', (req, res) => {
+router.get('/login', forwardAuthenticated, (req, res) => {
     res.render("login");
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', forwardAuthenticated, (req, res) => {
     res.render("register");
 });
 
